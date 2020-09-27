@@ -18,7 +18,6 @@ namespace EmpWageComputation
             int empWage = 0;
             int working_days = 1;
             int total_work_hour = 0;
-            int final_workdays = 0;
 
 
             while(total_work_hour<=100 && working_days <=20 )
@@ -46,11 +45,10 @@ namespace EmpWageComputation
                 empWage = empWagePerHour * workHour;
                 monthlyWage += empWage;
                 Console.WriteLine("Employee Wage for the day: " + empWage);
-                final_workdays = working_days;
                 working_days++;
                 total_work_hour += workHour;
             }
-            Console.WriteLine("\n" + "Monthly wage is: "+monthlyWage+"\n"+"Hours worked : "+ total_work_hour + "\n"+"Days worked: "+ final_workdays);
+            Console.WriteLine("\n" + "Monthly wage is: "+monthlyWage+"\n"+"Hours worked : "+ total_work_hour + "\n"+"Days worked: "+ (working_days - 1));
            
         }
     }
