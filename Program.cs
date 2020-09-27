@@ -9,62 +9,43 @@ namespace EmpWageComputation
             Console.WriteLine("Welcome to Employee Wage Computation");
 
 
-            int if_full_time = 1;
-            int if_part_time = 2;
+            const int if_full_time = 1;
+            const int if_part_time = 2;
+            int no_of_working_days = 20;
             int empWagePerHour = 20;
+            int monthlyWage = 0;
             int workHour = 0;
             int empWage = 0;
 
 
-            Random randNum = new Random();
-            int empCheck = randNum.Next(0, 3);
-            if(empCheck == if_full_time)
+            for(int day=1; day <= no_of_working_days;day++)
             {
-                Console.WriteLine("Employee is present");
-                workHour = 8;
+                Random randNum = new Random();
+                int empCheck = randNum.Next(0, 3);
+                switch (empCheck)
+                {
+                    case if_full_time:
+                        Console.WriteLine("Day {0}: Employee is present",day);
+                        workHour = 8;
+                        break;
+
+                    case if_part_time:
+                        Console.WriteLine("Day {0}: Employee is present and working part time",day);
+                        workHour = 4;
+                        break;
+
+                    default:
+                        Console.WriteLine("Day{0}: Employee is absent",day);
+                        workHour = 0;
+                        break;
+
+                }
+                empWage = empWagePerHour * workHour;
+                monthlyWage += empWage;
+                Console.WriteLine("Employee Wage for the day: " + empWage);
             }
-            else if(empCheck==if_part_time)
-            {
-                Console.WriteLine("Employee is present and working part time");
-                workHour = 4;
-            }
-            else
-            {
-                Console.WriteLine("Employee is absent");
-                workHour = 0;
-            }
-
-            // Employee Wage
-
-            empWage = empWagePerHour * workHour;
-            Console.WriteLine("Employee Wage for the day: "+empWage);
-
-
-            // Employee Attendance and Wage using Switch-Case
-
-            Console.WriteLine();
-            Console.WriteLine("Employee Attendance and Wage using Switch-Case:");
-
-            switch (empCheck)
-            {
-                case 1:
-                    Console.WriteLine("Employee is present");
-                    workHour = 8;
-                    break;
-
-                case 2:
-                    Console.WriteLine("Employee is present and working part time");
-                    workHour = 4;
-                    break;
-
-                default:
-                    Console.WriteLine("Employee is absent");
-                    workHour = 0;
-                    break;
-
-            }
-            empWage = empWagePerHour * workHour;
-            Console.WriteLine("Employee Wage for the day: " + empWage);
+            Console.WriteLine("\n" + "Monthly wage is: "+monthlyWage);
+           
         }
     }
 }
