@@ -10,27 +10,33 @@ namespace EmpWageComputation
 
 
             int if_full_time = 1;
+            int if_part_time = 2;
             int empWagePerHour = 20;
-            int fullDayHour = 0;
+            int workHour = 0;
             int empWage = 0;
 
 
             Random randNum = new Random();
-            int empCheck = randNum.Next(0, 2);
+            int empCheck = randNum.Next(0, 3);
             if(empCheck == if_full_time)
             {
                 Console.WriteLine("Employee is present");
-                fullDayHour = 8;
+                workHour = 8;
+            }
+            else if(empCheck==if_part_time)
+            {
+                Console.WriteLine("Employee is present and working part time");
+                workHour = 4;
             }
             else
             {
                 Console.WriteLine("Employee is absent");
-                fullDayHour = 0;
+                workHour = 0;
             }
 
             // Employee Wage
 
-            empWage = empWagePerHour * fullDayHour;
+            empWage = empWagePerHour * workHour;
             Console.WriteLine("Employee Wage for the day: "+empWage);
         }
     }
