@@ -38,6 +38,33 @@ namespace EmpWageComputation
 
             empWage = empWagePerHour * workHour;
             Console.WriteLine("Employee Wage for the day: "+empWage);
+
+
+            // Employee Attendance and Wage using Switch-Case
+
+            Console.WriteLine();
+            Console.WriteLine("Employee Attendance and Wage using Switch-Case:");
+
+            switch (empCheck)
+            {
+                case 1:
+                    Console.WriteLine("Employee is present");
+                    workHour = 8;
+                    break;
+
+                case 2:
+                    Console.WriteLine("Employee is present and working part time");
+                    workHour = 4;
+                    break;
+
+                default:
+                    Console.WriteLine("Employee is absent");
+                    workHour = 0;
+                    break;
+
+            }
+            empWage = empWagePerHour * workHour;
+            Console.WriteLine("Employee Wage for the day: " + empWage);
         }
     }
 }
