@@ -6,7 +6,7 @@ namespace EmpWageComputation
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to Employee Wage Computation");
+            Console.WriteLine("Welcome to Employee Wage Computation:\n");
 
 
             const int if_full_time = 1;
@@ -20,7 +20,7 @@ namespace EmpWageComputation
             int total_work_hour = 0;
 
 
-            while(total_work_hour<=100 && working_days <=20 )
+            while(total_work_hour<100 && working_days <=no_of_working_days )
             {
                 Random randNum = new Random();
                 int empCheck = randNum.Next(0, 3);
@@ -42,13 +42,18 @@ namespace EmpWageComputation
                         break;
 
                 }
+                if(total_work_hour==96)
+                {
+                    workHour = 4;
+                }
                 empWage = empWagePerHour * workHour;
                 monthlyWage += empWage;
-                Console.WriteLine("Employee Wage for the day: " + empWage);
+                Console.WriteLine("Employee Wage for the day: " + empWage+"\n");
                 working_days++;
                 total_work_hour += workHour;
             }
             Console.WriteLine("\n" + "Monthly wage is: "+monthlyWage+"\n"+"Hours worked : "+ total_work_hour + "\n"+"Days worked: "+ (working_days - 1));
+            Console.ReadKey();
            
         }
     }
