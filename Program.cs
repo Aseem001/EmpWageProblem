@@ -4,57 +4,63 @@ namespace EmpWageComputation
 {
     class Program
     {
+        //Constants
+        public const int IS_FULL_TIME = 1;
+        public const int IS_PART_TIME = 2;
+        public const int NO_OF_WORKING_DAYS = 20;
+        public const int EMP_WAGE_PER_HOUR = 20;
+        public const int MAX_HRS_IN_A_MONTH = 100;
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to Employee Wage Computation:\n");
-
-
-            const int if_full_time = 1;
-            const int if_part_time = 2;
-            int no_of_working_days = 20;
-            int empWagePerHour = 20;
+            computeEmpWage();
+        }
+        
+        public static void computeEmpWage()
+        {
+            //Variables
             int monthlyWage = 0;
             int workHour = 0;
             int empWage = 0;
-            int working_days = 1;
-            int total_work_hour = 0;
+            int workingDays = 1;
+            int totalWorkHour = 0;
 
+            Console.WriteLine("Welcome to Employee Wage Computation:\n");
 
-            while(total_work_hour<100 && working_days <=no_of_working_days )
+            //Computation condition:
+            while (totalWorkHour < MAX_HRS_IN_A_MONTH && workingDays <= NO_OF_WORKING_DAYS)
             {
                 Random randNum = new Random();
                 int empCheck = randNum.Next(0, 3);
                 switch (empCheck)
                 {
-                    case if_full_time:
-                        Console.WriteLine("Day {0}: Employee is present",working_days);
+                    case IS_FULL_TIME:
+                        Console.WriteLine("Day {0}: Employee is present", workingDays);
                         workHour = 8;
                         break;
 
-                    case if_part_time:
-                        Console.WriteLine("Day {0}: Employee is present and working part time", working_days);
+                    case IS_PART_TIME:
+                        Console.WriteLine("Day {0}: Employee is present and working part time", workingDays);
                         workHour = 4;
                         break;
 
                     default:
-                        Console.WriteLine("Day {0}: Employee is absent", working_days);
+                        Console.WriteLine("Day {0}: Employee is absent", workingDays);
                         workHour = 0;
                         break;
 
                 }
-                if(total_work_hour==96)
+                if (totalWorkHour == 96)
                 {
                     workHour = 4;
                 }
-                empWage = empWagePerHour * workHour;
+                empWage = EMP_WAGE_PER_HOUR * workHour;
                 monthlyWage += empWage;
-                Console.WriteLine("Employee Wage for the day: " + empWage+"\n");
-                working_days++;
-                total_work_hour += workHour;
+                Console.WriteLine("Employee Wage for the day: " + empWage + "\n");
+                workingDays++;
+                totalWorkHour += workHour;
             }
-            Console.WriteLine("\n" + "Monthly wage is: "+monthlyWage+"\n"+"Hours worked : "+ total_work_hour + "\n"+"Days worked: "+ (working_days - 1));
+            Console.WriteLine("\n" + "Monthly wage is: " + monthlyWage + "\n" + "Hours worked : " + totalWorkHour + "\n" + "Days worked: " + (workingDays - 1));
             Console.ReadKey();
-           
         }
     }
 }
