@@ -7,15 +7,13 @@ namespace EmpWageComputation
         //Constants
         public const int IS_FULL_TIME = 1;
         public const int IS_PART_TIME = 2;
-        public const int NO_OF_WORKING_DAYS = 20;
-        public const int EMP_WAGE_PER_HOUR = 20;
-        public const int MAX_HRS_IN_A_MONTH = 100;
         static void Main(string[] args)
         {
-            computeEmpWage();
+            computeEmpWage("Amazon", 20, 15, 80);
+            computeEmpWage("Reliance", 15, 20, 100);            
         }
         
-        public static void computeEmpWage()
+        public static void computeEmpWage(string company,int empWagePerHour,int noOfWorkingDays,int maxHoursPerMonth)
         {
             //Variables
             int monthlyWage = 0;
@@ -24,10 +22,10 @@ namespace EmpWageComputation
             int workingDays = 1;
             int totalWorkHour = 0;
 
-            Console.WriteLine("Welcome to Employee Wage Computation:\n");
+            Console.WriteLine("Welcome to Employee Wage Computation in : "+company+"\n");
 
             //Computation condition:
-            while (totalWorkHour < MAX_HRS_IN_A_MONTH && workingDays <= NO_OF_WORKING_DAYS)
+            while (totalWorkHour < maxHoursPerMonth && workingDays <= noOfWorkingDays)
             {
                 Random randNum = new Random();
                 int empCheck = randNum.Next(0, 3);
@@ -53,14 +51,13 @@ namespace EmpWageComputation
                 {
                     workHour = 4;
                 }
-                empWage = EMP_WAGE_PER_HOUR * workHour;
+                empWage = empWagePerHour * workHour;
                 monthlyWage += empWage;
                 Console.WriteLine("Employee Wage for the day: " + empWage + "\n");
                 workingDays++;
                 totalWorkHour += workHour;
             }
-            Console.WriteLine("\n" + "Monthly wage is: " + monthlyWage + "\n" + "Hours worked : " + totalWorkHour + "\n" + "Days worked: " + (workingDays - 1));
-            Console.ReadKey();
+            Console.WriteLine("Monthly wage is: " + monthlyWage + "\n" + "Hours worked : " + totalWorkHour + "\n" + "Days worked: " + (workingDays - 1)+"\n\n\n");
         }
     }
 }
