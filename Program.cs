@@ -4,14 +4,16 @@ namespace EmpWageComputation
 {
     class Program
     {
-       
         static void Main(string[] args)
         {
-            EmpWageBuilderArray empWageBuilder = new EmpWageBuilderArray();
-            empWageBuilder.addCompanyEmpWage("DMart", 20, 2, 10);
-            empWageBuilder.addCompanyEmpWage("Reliance", 10, 4, 20);
-            empWageBuilder.computeEmpWage();
-        }                       
+            EmpWageBuilder empWageBuilder = new EmpWageBuilder();
+            empWageBuilder.AddCompanyEmpWage("Dmart", 20, 10, 60);
+            empWageBuilder.AddCompanyEmpWage("Reliance", 15, 7, 40);         
+            empWageBuilder.ComputeEmpWage();
+            Console.ReadKey();
+        }
     }
-  
+
+    
+
 }
