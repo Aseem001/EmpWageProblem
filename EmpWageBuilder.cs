@@ -4,7 +4,7 @@ using System.Text;
 
 namespace EmpWageComputation
 {
-    public class EmpWageBuilder
+    public class EmpWageBuilder : IComputeWage
     {
         public const int IS_FULL_TIME = 1;
         public const int IS_PART_TIME = 2;
@@ -43,6 +43,7 @@ namespace EmpWageComputation
             int empHours = 0;
             int totalWagePerDay = 0;
             int totalWagePerMonth = 0;
+            Console.WriteLine("Company:"+companyEmpWage.company+"=>");
             while (totalEmpHours < companyEmpWage.maxHoursPerMonth && workingDays < companyEmpWage.numOfWorkingDays)
             {
                 EmpWageBuilder empWageBuilder = new EmpWageBuilder();
